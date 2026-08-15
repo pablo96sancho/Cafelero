@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Build artifacts
+.build/
+**/.build/
+*.app
+**/*.app
+*.dmg
+**/*.dmg
+
+# GitHub release staging
+github_cafelero/releases/*
+!github_cafelero/releases/.gitkeep

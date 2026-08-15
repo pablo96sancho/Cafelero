@@ -1,0 +1,32 @@
+name: Release DMG
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build app
+        run: |
+          chmod +x ./build_and_run.sh
+          ./build_and_run.sh
+
+      - name: Generate DMG
+        run: |
+          chmod +x ./create_dmg.sh
+          ./create_dmg.sh
+
+      - name: Upload DMG to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            Cafelero-Installer.dmg
