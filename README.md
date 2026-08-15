@@ -2,7 +2,7 @@
 
 > Mantén tu Mac despierto con un solo clic.
 
-Cafelero es una aplicación ligera e intuitiva para la barra de menú de macOS diseñada para evitar que tu equipo entre en modo de reposo o active el salvapantallas mientras trabajas, presentas o descargas archivos.
+Cafelero es una aplicación ligera para la barra de menú de macOS que evita que el equipo entre en reposo o active el salvapantallas mientras trabajas, presentas o descargas archivos.
 
 [![Download DMG](https://img.shields.io/github/v/release/pablo96sancho/Cafelero?label=Descargar%20DMG&color=007AFF&logo=apple)](https://github.com/pablo96sancho/Cafelero/releases/latest)
 
@@ -11,9 +11,15 @@ Cafelero es una aplicación ligera e intuitiva para la barra de menú de macOS d
 ## 🚀 Características
 
 - ☕️ Activación rápida desde la barra de menú
-- ⏱️ Temporizador configurable para mantener el sistema despierto durante periodos concretos
-- 💻 Diseño nativo y ligero para macOS
-- ⚙️ Modo continuo para evitar interrupciones mientras trabajas
+- ⏱️ Temporizador configurable para mantener el sistema despierto
+- 💻 Diseño nativo, ligero y centrado en macOS
+- ⚙️ Modo continuo para evitar interrupciones durante el trabajo
+
+---
+
+## 📸 Vista previa
+
+![Cafelero Preview](Cafelero/screenshot.png)
 
 ---
 
@@ -23,6 +29,18 @@ Cafelero es una aplicación ligera e intuitiva para la barra de menú de macOS d
 2. Abre el archivo `Cafelero-Installer.dmg`.
 3. Arrastra **Cafelero.app** a la carpeta **Aplicaciones**.
 4. Ejecuta la app desde la barra de menú.
+
+---
+
+## 🔒 Permisos
+
+Si activas la opción de respaldo de teclado neutro, macOS pedirá permiso de **Accesibilidad** la primera vez que se envíe el evento `CGEvent`.
+
+Puedes concederlo en:
+
+**Ajustes del Sistema → Privacidad y seguridad → Accesibilidad**
+
+Si solo usas la assertion de IOKit, no se necesita ningún permiso especial.
 
 ---
 
@@ -43,21 +61,3 @@ chmod +x build_and_run.sh
 ```
 
 Esto compila y ejecuta la app desde SwiftPM, generando el paquete `.app` listo para usar.
-
----
-
-## 🔒 Permisos
-
-Si activas la opción de respaldo de teclado neutro, macOS pedirá permiso de **Accesibilidad** la primera vez que se envíe el evento `CGEvent`.
-
-Puedes concederlo en:
-
-**Ajustes del Sistema → Privacidad y seguridad → Accesibilidad**
-
-Si solo usas la assertion de IOKit, no se necesita ningún permiso especial.
-
----
-
-## 📸 Captura de pantalla
-
-![Cafelero Preview](Cafelero/screenshot.png)
