@@ -58,6 +58,6 @@ Si solo usas la assertion de IOKit, no se necesita ningún permiso especial.
 
 ---
 
-## 📸 Captura próximamente
+## 📸 Captura de pantalla
 
-La vista previa visual de la app se añadirá en una versión posterior.
+![Cafelero Preview](Cafelero/screenshot.png)
