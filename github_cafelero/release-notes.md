@@ -1,4 +1,9 @@
-# Cafelero v1.0
+# Cafelero v1.1.0
+
+## Novedades en v1.1.0
+
+- **Icono oficial de la app**: Integrado el icono en el bundle de `Cafelero.app` para que se visualice correctamente en la carpeta de aplicaciones y el sistema.
+- **Instalador DMG personalizado**: Aplicado el icono de Cafelero al archivo `.dmg` y al volumen virtual que se monta al abrirlo.
 
 Mantén tu Mac despierto con un solo clic.
 
