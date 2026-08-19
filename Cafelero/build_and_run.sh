@@ -39,6 +39,7 @@ mkdir -p "${RESOURCES_DIR}"
 
 cp "${BIN_PATH}" "${MACOS_DIR}/${APP_NAME}"
 cp "Sources/${APP_NAME}/Info.plist" "${CONTENTS_DIR}/Info.plist"
+cp "Sources/${APP_NAME}/AppIcon.icns" "${RESOURCES_DIR}/AppIcon.icns"
 
 # Firma ad-hoc: necesaria en Macs con Apple Silicon para poder ejecutar
 # el binario y para que macOS conceda los permisos correspondientes

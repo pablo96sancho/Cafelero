@@ -55,29 +55,69 @@ mkdir -p "${STAGING_DIR}"
 cp -R "${APP_PATH}" "${STAGING_DIR}/"
 ln -s /Applications "${STAGING_DIR}/Applications"
 
+# Copiar el icono al staging como .VolumeIcon.icns para el volumen del DMG
+if [ -f "Sources/${APP_NAME}/AppIcon.icns" ]; then
+    cp "Sources/${APP_NAME}/AppIcon.icns" "${STAGING_DIR}/.VolumeIcon.icns"
+    echo "🎨 Icono del volumen copiado al staging"
+fi
+
 echo "📁 Staging listo en ${STAGING_DIR}/ (app + symlink a /Applications)"
 
-# ── 3) Crear el DMG comprimido directamente con hdiutil ─────────────
-# -srcfolder + -format UDZO genera la imagen final ya comprimida en
-# un solo paso, sin necesidad de montar nada ni de convertir después.
-# Esto es lo que elimina por completo la dependencia de Finder/
-# AppleScript: nunca hay un volumen montado que maquetar a mano.
-echo "📦 Creando ${DMG_NAME}..."
+# ── 3) Crear el DMG y aplicar iconos ─────────────────────────────────
+# Para que el volumen del DMG tenga el icono personalizado, debemos
+# crear una imagen de lectura/escritura (UDRW), montarla, aplicar
+# el atributo de icono personalizado con SetFile, desmontarla y
+# finalmente convertirla a UDZO (comprimido).
+echo "📦 Creando imagen temporal de lectura/escritura..."
+TMP_RW_DMG="${APP_NAME}-rw.dmg"
+rm -f "${TMP_RW_DMG}"
+
 hdiutil create \
     -srcfolder "${STAGING_DIR}" \
     -volname "${VOLUME_NAME}" \
     -fs HFS+ \
+    -format UDRW \
+    -ov \
+    -quiet \
+    "${TMP_RW_DMG}"
+
+echo "🔧 Montando imagen temporal para configurar el icono del volumen..."
+MOUNT_DIR=$(mktemp -d /tmp/cafelero-mount.XXXXXX)
+hdiutil attach -mountpoint "${MOUNT_DIR}" "${TMP_RW_DMG}" -quiet
+
+if [ -f "${MOUNT_DIR}/.VolumeIcon.icns" ]; then
+    # Activar el flag de icono personalizado en el volumen
+    SetFile -a C "${MOUNT_DIR}"
+    # Ocultar el archivo de icono
+    chflags hidden "${MOUNT_DIR}/.VolumeIcon.icns"
+    echo "✅ Icono del volumen activado y ocultado"
+fi
+
+echo "🔌 Desmontando imagen temporal..."
+hdiutil detach "${MOUNT_DIR}" -quiet
+rm -rf "${MOUNT_DIR}"
+
+echo "📦 Convirtiendo a DMG final comprimido (UDZO)..."
+hdiutil convert "${TMP_RW_DMG}" \
     -format UDZO \
     -imagekey zlib-level=9 \
     -ov \
     -quiet \
-    "${DMG_NAME}"
+    -o "${DMG_NAME}"
+
+rm -f "${TMP_RW_DMG}"
+
+# Aplicar el icono al propio archivo .dmg
+if [ -f "Sources/${APP_NAME}/AppIcon.icns" ] && [ -f "./set_icon.swift" ]; then
+    echo "🎨 Aplicando icono al archivo DMG..."
+    ./set_icon.swift "Sources/${APP_NAME}/AppIcon.icns" "${DMG_NAME}"
+fi
 
 # ── 4) Verificación final ───────────────────────────────────────────
 if [ -f "${DMG_NAME}" ]; then
     SIZE_HUMAN=$(du -h "${DMG_NAME}" | cut -f1)
     echo ""
-    echo "✅ DMG creado correctamente: ${DMG_NAME} (${SIZE_HUMAN})"
+    echo "✅ DMG creado correctamente con iconos aplicados: ${DMG_NAME} (${SIZE_HUMAN})"
     echo ""
     echo "   Puedes distribuirlo tal cual. El usuario deberá:"
     echo "   1) Abrir ${DMG_NAME}"

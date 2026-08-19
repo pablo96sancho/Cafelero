@@ -1,0 +1,92 @@
+{
+  "fill" : {
+    "automatic-gradient" : "srgb:0.66800,0.47512,0.25860,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "hidden" : true,
+          "image-name" : "Diseño sin título (1)-Photoroom.png",
+          "name" : "Diseño sin título (1)-Photoroom",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              89,
+              0
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.3
+      }
+    },
+    {
+      "layers" : [
+        {
+          "blend-mode" : "normal",
+          "fill" : "automatic",
+          "glass" : true,
+          "hidden" : true,
+          "image-name" : "Diseño sin título (4)-Photoroom.png",
+          "name" : "Diseño sin título (4)-Photoroom",
+          "opacity" : 0.97,
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              27.5,
+              -21
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.3
+      }
+    },
+    {
+      "layers" : [
+        {
+          "blend-mode" : "normal",
+          "fill" : "automatic",
+          "glass" : true,
+          "hidden" : false,
+          "image-name" : "Diseño sin título-Photoroom.png",
+          "name" : "Diseño sin título-Photoroom",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              27.5,
+              -21
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.3
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

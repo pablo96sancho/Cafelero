@@ -28,5 +28,7 @@
 
     <key>NSHumanReadableCopyright</key>
     <string>Cafelero</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
 </dict>
 </plist>

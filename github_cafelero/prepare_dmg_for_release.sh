@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APP_NAME="Cafelero"
-SOURCE_DMG="${ROOT_DIR}/${APP_NAME}-Installer.dmg"
+SOURCE_DMG="${ROOT_DIR}/Cafelero/${APP_NAME}-Installer.dmg"
 RELEASE_DIR="${ROOT_DIR}/github_cafelero/releases"
 DEST_DMG="${RELEASE_DIR}/${APP_NAME}-Installer.dmg"
 
@@ -11,7 +11,7 @@ mkdir -p "${RELEASE_DIR}"
 
 if [ ! -f "${SOURCE_DMG}" ]; then
     echo "📦 El DMG no existe todavía. Generándolo desde la app..."
-    cd "${ROOT_DIR}"
+    cd "${ROOT_DIR}/Cafelero"
 
     if [ -f "./build_and_run.sh" ]; then
         ./build_and_run.sh

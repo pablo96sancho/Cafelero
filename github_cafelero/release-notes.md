@@ -1,13 +1,15 @@
-# Cafelero
+# Cafelero v1.0
 
-Versión de prueba para macOS.
+Mantén tu Mac despierto con un solo clic.
 
-## Qué incluye
+Cafelero es una aplicación ligera para la barra de menú de macOS que evita que el sistema entre en reposo mientras trabajas, presentas o descargas archivos.
 
-- Aplicación de barra de menú para evitar que el Mac entre en reposo
-- Soporte para duración indefinida o limitada
-- Inicio automático con sesión
-- Empaquetado como archivo DMG listo para instalar
+## Incluye
+
+- Activación rápida desde la barra de menú
+- Temporizador configurable para evitar el reposo durante periodos concretos
+- Modo continuo para mantener el Mac activo sin interrupciones
+- Empaquetado listo para instalar con archivo DMG
 
 ## Instalación
 
@@ -20,3 +22,7 @@ Versión de prueba para macOS.
 
 - macOS 13 o superior
 - Xcode 15+ o Command Line Tools
+
+## Nota
+
+Esta versión inicial está pensada para uso sencillo y fiable en macOS, con una experiencia ligera y enfocada en la productividad.
