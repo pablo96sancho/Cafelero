@@ -17,16 +17,16 @@ jobs:
 
       - name: Build app
         run: |
-          chmod +x ./build_and_run.sh
-          ./build_and_run.sh
+          chmod +x Cafelero/build_and_run.sh
+          cd Cafelero && ./build_and_run.sh
 
       - name: Generate DMG
         run: |
-          chmod +x ./create_dmg.sh
-          ./create_dmg.sh
+          chmod +x Cafelero/create_dmg.sh
+          cd Cafelero && ./create_dmg.sh
 
       - name: Upload DMG to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            Cafelero-Installer.dmg
+            Cafelero/Cafelero-Installer.dmg
