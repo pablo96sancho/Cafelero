@@ -1,63 +1,82 @@
-# ☕️ Cafelero
+<div align="center">
 
-> Mantén tu Mac despierto con un solo clic.
+<img src="docs/Cafelero%20ICONS/Cafelero%20ICON-iOS-Default-1024@1x.png" width="128" alt="Icono de Cafelero" />
 
-Cafelero es una aplicación ligera para la barra de menú de macOS que evita que el equipo entre en reposo o active el salvapantallas mientras trabajas, presentas o descargas archivos.
+# Cafelero
 
-[![Download DMG](https://img.shields.io/github/v/release/pablo96sancho/Cafelero?label=Descargar%20DMG&color=007AFF&logo=apple)](https://github.com/pablo96sancho/Cafelero/releases/latest)
+**Mantén tu Mac despierto con un solo clic.**
 
----
+[![Descargar para macOS](https://img.shields.io/badge/Descargar_para_macOS-0071E3?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/pablo96sancho/Cafelero/releases/latest/download/Cafelero-Installer.dmg)
 
-## 🚀 Características
+![Versión](https://img.shields.io/github/v/release/pablo96sancho/Cafelero?style=flat-square&label=versión&color=000000)
+![macOS 13+](https://img.shields.io/badge/macOS-13%2B-000000?style=flat-square&logo=apple&logoColor=white)
+![Apple Silicon](https://img.shields.io/badge/Apple_Silicon-M1%2B-000000?style=flat-square)
+![Licencia MIT](https://img.shields.io/badge/licencia-MIT-000000?style=flat-square)
 
-- ☕️ Activación rápida desde la barra de menú
-- ⏱️ Temporizador configurable para mantener el sistema despierto
-- 💻 Diseño nativo, ligero y centrado en macOS
-- ⚙️ Modo continuo para evitar interrupciones durante el trabajo
+[🇬🇧 English version](./README.en.md)
 
----
+</div>
 
-## 📸 Vista previa
+<br />
 
-![Cafelero Preview](Cafelero/screenshot.png)
+<p align="center">
+  <img src="screenshot.png" width="320" alt="Menú de Cafelero en la barra de menú, con el interruptor y las duraciones" />
+</p>
 
----
+Cafelero es una app de la barra de menú que evita que el Mac entre en reposo o active el
+salvapantallas mientras trabajas, presentas o descargas archivos.
 
-## 📦 Instalación
+## Características
 
-1. Descarga la última versión desde [GitHub Releases](https://github.com/pablo96sancho/Cafelero/releases/latest).
-2. Abre el archivo `Cafelero-Installer.dmg`.
-3. Arrastra **Cafelero.app** a la carpeta **Aplicaciones**.
-4. Ejecuta la app desde la barra de menú.
+- ☕️ Se enciende y se apaga con un interruptor desde la barra de menú.
+- ⏱️ Duraciones listas para usar: 15, 30 y 45 min, 1, 4, 8 y 12 horas, o **∞** sin límite.
+- 💻 Nativa y ligera: hecha en Swift con SwiftUI, sin dependencias.
+- 🔒 Sin permisos especiales en el modo normal.
 
----
+## Instalación
 
-## 🔒 Permisos
+1. [Descarga el instalador](https://github.com/pablo96sancho/Cafelero/releases/latest/download/Cafelero-Installer.dmg).
+2. Ábrelo y arrastra **Cafelero.app** a **Aplicaciones**.
+3. Ábrela. Aparecerá en la barra de menú.
 
-Si activas la opción de respaldo de teclado neutro, macOS pedirá permiso de **Accesibilidad** la primera vez que se envíe el evento `CGEvent`.
+### Primera apertura
 
-Puedes concederlo en:
+La app no está firmada con una cuenta de Apple Developer, así que la primera vez macOS
+la bloquea con un aviso. Para abrirla:
 
-**Ajustes del Sistema → Privacidad y seguridad → Accesibilidad**
+1. Intenta abrir Cafelero y cierra el aviso (sin moverla a la Papelera).
+2. Ve a **Ajustes del Sistema → Privacidad y seguridad**.
+3. En la sección **Seguridad**, pulsa **Abrir igualmente** junto al mensaje sobre Cafelero.
+4. Confirma con tu contraseña o Touch ID. Solo hace falta la primera vez.
 
-Si solo usas la assertion de IOKit, no se necesita ningún permiso especial.
+<details>
+<summary>Alternativa desde la Terminal</summary>
 
----
+```bash
+xattr -dr com.apple.quarantine /Applications/Cafelero.app
+```
 
-## 🛠️ Desarrollo
+</details>
 
-### Requisitos
+### Permisos
 
-- macOS 13 o superior
-- Xcode 15+ o Xcode Command Line Tools (`xcode-select --install`)
-- Swift 5.9+
+Cafelero mantiene el Mac despierto con una *power assertion* de IOKit, que no necesita
+ningún permiso. Solo si activas la opción de **respaldo de teclado neutro**, macOS pedirá
+permiso de **Accesibilidad** la primera vez: *Ajustes del Sistema → Privacidad y
+seguridad → Accesibilidad*.
 
-### Compilar y ejecutar
+## Desarrollo
+
+Requisitos: macOS 13 o superior, Xcode 15+ (o las Command Line Tools) y Swift 5.9+.
 
 ```bash
 cd Cafelero
-chmod +x build_and_run.sh
-./build_and_run.sh
+./build_and_run.sh   # compila y abre la app
+./create_dmg.sh      # genera Cafelero-Installer.dmg
 ```
 
-Esto compila y ejecuta la app desde SwiftPM, generando el paquete `.app` listo para usar.
+Cada Release de GitHub publica el DMG automáticamente con GitHub Actions.
+
+## Licencia
+
+[MIT](LICENSE) © Pablo Sancho

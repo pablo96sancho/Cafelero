@@ -11,5 +11,3 @@
 **/*.dmg
 
 # GitHub release staging
-github_cafelero/releases/*
-!github_cafelero/releases/.gitkeep
